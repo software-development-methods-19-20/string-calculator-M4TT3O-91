@@ -2,25 +2,30 @@ package dssc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StringCalcualtor {
     public static int add (String numbers) {
         if(numbers.isEmpty()) {
             return 0;
-        }else if (numbers.contains(",")) {
+        }else{
             return StringAdder(numbers);
-        }else {
-            return Integer.valueOf(numbers);
         }
     }
 
-public static int StringAdder(String numbers){
-    String[] token = numbers.split(",");
-    Arrays.asList(token)
-    return Integer.valueOf(token[0]) + Integer.valueOf(token[1]);
+    public static int StringAdder(String numbers){
+        int sum=0;
+        String delimiter ="[,]+";
+        String[] token = numbers.split(delimiter);
 
-}
+        return Arrays.stream(numbers.split(delimiter)).map(x->Integer.parseInt(x)).reduce(0,(x,y)->x+y);
+
+        /*for (String i : token)
+            sum =sum+Integer.valueOf(i);
+        return sum;*/
+
+    }
 
 }
 
