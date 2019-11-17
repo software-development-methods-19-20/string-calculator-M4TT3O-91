@@ -16,7 +16,7 @@ public class StringCalcualtor {
 
     public static int StringAdder(String numbers){
         int sum=0;
-        String delimiter ="[,]+";
+        String delimiter ="[,\n]+";
         String[] token = numbers.split(delimiter);
 
         return Arrays.stream(numbers.split(delimiter)).map(x->Integer.parseInt(x)).reduce(0,(x,y)->x+y);

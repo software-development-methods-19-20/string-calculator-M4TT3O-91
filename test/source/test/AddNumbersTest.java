@@ -24,5 +24,7 @@ public class AddNumbersTest {
 
     @Test
     void numbers(){assertThat(StringCalcualtor.add("1,2,3"), is(6)); }
+    @Test
+    void NewLine (){assertThat(StringCalcualtor.add("1\n2\n3"),is(6));}
 
 }
