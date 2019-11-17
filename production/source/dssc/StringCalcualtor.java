@@ -15,15 +15,22 @@ public class StringCalcualtor {
         }
     }
 
-    public static int StringAdder(String numbers){
-        Stream<String> st =Arrays.asList(numbers).stream();
-        String delimiter = "[,\n]+";
-        Stream<String> list=Arrays.stream(numbers.split(delimiter));
 
-        return list.map(Integer::parseInt).reduce(0,(x, y)->x+y);
-        //return Arrays.stream(numbers.split(delimiter)).map(Integer::parseInt).reduce(0,(x, y)->x+y);
+    public static int StringAdder(String numbers){
+        String delimiter = "[,\n]+";
+        if(numbers.contains("//")) {
+            delimiter = "[\n"+numbers.charAt(2)+",]+";
+            int i = numbers.indexOf("\n");
+            numbers = numbers.substring((i+1), numbers.length());
+        }
+        return Arrays.stream(numbers.split(delimiter)).map(Integer::parseInt).reduce(0,(x, y)->x+y);
+        /*Stream<String> list=Arrays.stream(numbers.split(delimiter));
+        return list.map(Integer::parseInt).reduce(0,(x, y)->x+y);*/
+
 
     }
     /*subSequence(int beginIndex, int endIndex)*/
+
+
 
 }
