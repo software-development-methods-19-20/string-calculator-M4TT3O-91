@@ -23,13 +23,8 @@ public class AddNumbersTest {
     void numbers(){assertThat(StringCalcualtor.add("1,2,3"), is(6)); }
     @Test
     void NewLine (){assertThat(StringCalcualtor.add("1,2\n3"),is(6));}
-
-    /*Support different delimiters.
-    To change a delimiter, the beginning of the string will contain a separate line
-    that looks like this:
-    “//[delimiter]\n[numbers…]”. For example, “//;\n1;2”
-    should return 3 where the default delimiter is ;.
-    The first line is optional. All existing scenarios should still be supported.*/
     @Test
     void InsertDelimiter (){assertThat(StringCalcualtor.add("//;\n1;2"),is(3));}
+    @Test@Disabled
+    void CheckNegative (){assertThat(StringCalcualtor.add("//;\n1;2;-1;-2;-3"),is(3));}
 }
