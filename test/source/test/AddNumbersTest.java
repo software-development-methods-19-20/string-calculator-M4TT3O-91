@@ -27,4 +27,8 @@ public class AddNumbersTest {
     void InsertDelimiter (){assertThat(StringCalcualtor.add("//;\n1;2"),is(3));}
     @Test@Disabled
     void CheckNegative (){assertThat(StringCalcualtor.add("//;\n1;2;-1;-2;-3"),is(3));}
+    @Test
+    void IgnoreBigger (){assertThat(StringCalcualtor.add("//;\n1;2;1001"),is(3));}
+    @Test
+    void InsertDelimiter2 (){assertThat(StringCalcualtor.add("//[;;]\n1;;2"),is(3));}
 }
