@@ -1,11 +1,8 @@
 package dssc;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StringCalcualtor {
@@ -23,7 +20,7 @@ public class StringCalcualtor {
         if(numbers.contains("//")) {
             delimiter = "[\n"+numbers.charAt(2)+",]+";
             int i = numbers.indexOf("\n");
-            numbers = numbers.substring((i+1), numbers.length());
+            numbers = numbers.substring(i+1);
         }
         //return Arrays.stream(numbers.split(delimiter)).map(Integer::parseInt).reduce(0,(x, y)->x+y);
         List<Integer> IsNeg=Arrays.stream(numbers.split(delimiter))
@@ -33,7 +30,7 @@ public class StringCalcualtor {
             throw new RuntimeException("Negativi non ammessi!! Controllare ci sono: "+IsNeg);
         }else {
             Stream<String> list = Arrays.stream(numbers.split(delimiter));
-            return list.map(Integer::parseInt).reduce(0, (x, y) -> x + y);
+            return list.map(Integer::parseInt).reduce(0, Integer::sum);
         }
 
     }
