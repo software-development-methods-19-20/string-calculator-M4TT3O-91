@@ -1,6 +1,7 @@
 package test;
 
 import dssc.StringCalcualtor;
+import org.junit.Rule;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -31,4 +32,6 @@ public class AddNumbersTest {
     void IgnoreBigger (){assertThat(StringCalcualtor.add("//;\n1;2;1001"),is(3));}
     @Test
     void InsertDelimiter2 (){assertThat(StringCalcualtor.add("//[;;]\n1;;2"),is(3));}
+    @Test
+    void MultipleDelimiter (){assertThat(StringCalcualtor.add("//[:][°]\n1:2°3"),is(6));}
 }

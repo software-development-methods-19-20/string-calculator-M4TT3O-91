@@ -16,18 +16,15 @@ public class StringCalcualtor {
 
 
     public static int StringAdder(String numbers){
-        String delimiter = "[,\n]+";
+        String delimiter = "[,\n\r]+";
+        int index = numbers.indexOf("\n");
+        int size = numbers.length();
+
         if(numbers.contains("//")) {
-            if(numbers.contains("[")) {
-                int i1 = numbers.indexOf('[');
-                int i2 = numbers.indexOf(']');
-                delimiter="[\n" + numbers.substring(i1+1,i2) + ",]+" ;
-                System.out.println("del "+delimiter);
-            }else {
-                delimiter = "[\n" + numbers.charAt(2) + ",]+";
-            }
-            int i = numbers.indexOf("\n");
-            numbers = numbers.substring(i + 1);
+                String del =numbers.substring(2,index).replaceAll("[|]","");
+                numbers=numbers.substring(index+1,size).replaceAll("\n\r|\r|\n","");
+                delimiter = "["+del+",\n\r]+";
+            System.out.println("DEL "+del);
         }
 
         List<Integer> Number= Arrays.stream(numbers.split(delimiter))
@@ -44,10 +41,5 @@ public class StringCalcualtor {
         }
 
     }
-
-    /*subSequence(int beginIndex, int endIndex)*/
-    /*throw new RuntimeException("Carta non valida");*/
-
-
 
 }
